@@ -1,12 +1,8 @@
-# File Selector Maven plugin for adding Squencing.com's Real-Time Personalization technology to Android and Java apps
+# Master Maven plugin for adding Squencing.com's Real-Time Personalization technology to Android and Java apps
 =========================================
-This Maven plugin can be used to quickly add a File Selector to your app. By adding this File Selector to your app, you're app user will be able to select a file stored securely in the user's [Sequencing.com](https://sequencing.com) account. Your app will then be able to use the genetic data in this file to provide the user with Real-Time Personalization.
+This Master Maven plugin can be used to quickly add Real-Time Personalization to your app. This Master Plugin contains a customizable, end-to-end plug-n-play solution that quickly adds all necessary code (OAuth2, File Selector and App Chain coding) to your app.
 
-While the File Selector works out-of-the-box, it is also fully customizable.
-
-A 'Master Maven Plugin' is also available. The Master Plugin contains a customizable, end-to-end solution that quickly adds all necessary code to your app for Sequencing.com's Real-Time Personalization. 
-
-Once the Master Plugin is added to your app all you'll need to do is:
+Once this Master Plugin is added to your app all you'll need to do is:
 
 1. add your [OAuth2 secret](https://sequencing.com/developer-center/new-app-oauth-secret)
 2. add one or more [App Chain numbers](https://sequencing.com/app-chains/)
@@ -14,35 +10,14 @@ Once the Master Plugin is added to your app all you'll need to do is:
 
 To code Real-Time Personalization technology into apps, developers may [register for a free account](https://sequencing.com/user/register/) at Sequencing.com. App development with RTP is always free.
 
-Related repos
-=========================================
-**Master Plugin is available in the following languages:**
-* [Android (Maven plugin)](https://github.com/SequencingDOTcom/Maven-Android-Master-Plugin-Java)
-* [Java (Maven plugin)](https://github.com/SequencingDOTcom/Maven-Android-Master-Plugin-Java) 
+**The Master Plugin is also available in the following languages:**
+* Android (Maven plugin) <-- this repo
+* Java (Maven plugin)] <-- this repo
 * [Objective-C (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPods-iOS-Master-Plugin-ObjectiveC)
 * [Swift (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPods-iOS-Master-Plugin-Swift)
 
-**File Selector is available in the following languages:**
-File Selector Plugins
-* Android (Maven plugin) <-- this repo
-* Java (Maven plugin) <-- this repo
-* [Objective-C (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPods-iOS-Master-Plugin-ObjectiveC)
-* [Swift (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPod-iOS-File-Selector-Swift)
-
-File Selector Code
-* [Android (code)](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/android)
-* [Objective-C (code)](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/objective-c)
-* [Swift (code)](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/swift)
-* [PHP](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/php)
-* [Perl](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/perl)
-* [Python (Django)](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/python-django)
-* [Java (Servlet)](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/java-servlet)
-* [Java (Spring)](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/java-spring)
-* [.NET/C#](https://github.com/SequencingDOTcom/oAuth2-code-and-demo/tree/master/dot-net-cs)
-
 Contents
 =========================================
-* Related repos
 * Implementation
 * App chains
 * Authentication flow
@@ -53,15 +28,17 @@ Contents
 
 Implementation
 ======================================
-To implement oAuth2 authentication for your app:
+To implement this Master Plugin for your app:
 
 1) [Register](https://sequencing.com/user/register/) for a free account
 
-2) Add [Sequencing.com's oAuth2 code](https://github.com/SequencingDOTcom/oAuth2-code-and-demo) from this repo to your app
+2) Add this Master Plugin to your app
 
-3) [Generate an OAuth2 secret](https://sequencing.com/api-secret-generator) and insert the secret into the OAuth2 code
+3) [Generate an OAuth2 secret](https://sequencing.com/api-secret-generator) and insert the secret into the plugin
 
-Once OAuth2 authentication is implemented, select one or more [app chains](https://sequencing.com/app-chains) that will provide information you can use to personalize your app.
+4) Add one or more [App Chain numbers](https://sequencing.com/app-chains/). The App Chain will provide genetic-based information you can use to personalize your app.
+
+5) Configure your app based on each [app chain's possible responses](https://sequencing.com/app-chains/)
 
 App chains
 ======================================
@@ -148,7 +125,8 @@ Resources
 ======================================
 * [App chains](https://sequencing.com/app-chains)
 * [File selector code](https://github.com/SequencingDOTcom/File-Selector-code)
-* [Developer center](https://sequencing.com/developer-center)
+* [Generate OAuth2 secret](https://sequencing.com/developer-center/new-app-oauth-secret)
+* [Developer Center](https://sequencing.com/developer-center)
 * [Developer Documentation](https://sequencing.com/developer-documentation/)
 
 Maintainers
