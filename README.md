@@ -19,6 +19,7 @@ To code Real-Time Personalization technology into apps, developers may [register
 Contents
 =========================================
 * Implementation
+* 
 * App chains
 * Authentication flow
 * Steps
