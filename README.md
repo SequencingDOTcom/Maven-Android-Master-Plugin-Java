@@ -19,7 +19,9 @@ To code Real-Time Personalization technology into apps, developers may [register
 Contents
 =========================================
 * Implementation
-* 
+* Master Gradle plugin integration
+* OAuth Gradle plugin integration
+* File selector Gradle plugin integration
 * App chains
 * Authentication flow
 * Steps
@@ -40,6 +42,154 @@ To implement this Master Plugin for your app:
 4) Add one or more [App Chain numbers](https://sequencing.com/app-chains/). The App Chain will provide genetic-based information you can use to personalize your app.
 
 5) Configure your app based on each [app chain's possible responses](https://sequencing.com/app-chains/)
+
+Master Gradle plugin integration
+======================================
+
+* see [gradle guides](https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html) 
+* include dependency into build.gradle file in dependencies section. Here is dependency declaration example:
+	```
+	dependencies {
+   		compile 'com.sequencing:master-plugin:1.0.5' 
+    }
+	```
+* integrate OAuth Gradle plugin
+* integrate File selector Gradle plugin
+* integrate AppChains Gradle plugin
+
+OAuth Gradle plugin integration
+======================================
+
+You need to follow instructions below if you want to build in and use OAuth logic in your existing or new project.
+
+* create a new Android Gradle based project (i.e. in Android Studio or Eclipse)
+* add gradle dependency
+	* see [gradle guides](https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html) 
+	* add dependency into build.gradle file in dependencies section. Here is dependency declaration example:
+	```
+	dependencies {
+   		compile 'com.sequencing:android-oauth:1.0.3' 
+    }
+	```
+* integrate autherization functionality
+	* add imports
+	```java
+    import com.sequencing.androidoauth.core.OAuth2Parameters;
+	import com.sequencing.androidoauth.core.ISQAuthCallback;
+	import com.sequencing.androidoauth.core.SQUIoAuthHandler;
+	import com.sequencing.oauth.core.Token;
+    ```
+    * for authorization you need to specify your application parameters at [AuthenticationParameters](https://github.com/SequencingDOTcom/Maven-OAuth-Java/blob/master/src/main/java/com/sequencing/oauth/config/AuthenticationParameters.java). Authorization plugin use custom url schema which you should define. For example:
+    ```java
+    AuthenticationParameters parameters = new AuthenticationParameters.ConfigurationBuilder()
+                .withRedirectUri("[your custom url schema]/Default/Authcallback")
+                .withClientId("[your client id]")
+                .withClientSecret("[your client secret]")
+                .build();
+    ```
+    * implement [ISQAuthCallback](https://github.com/SequencingDOTcom/Maven-Android-OAuth-Java/blob/master/src/main/java/com/sequencing/androidoauth/core/ISQAuthCallback.java).
+    ```java
+     /**
+     * Callback for handling success authentication
+     * @param token token of success authentication
+     */
+    void onAuthentication(Token token);
+
+    /**
+     * Callback of handling failure authentication
+     * @param e exception of failure
+     */
+    void onFailedAuthentication(Exception e);
+    ```
+    * create View that will serve as initial element for authentication flow. It can be a Button or an extension of View class. Do not define onClickListener for this View.
+    * create [SQUIoAuthHandler](https://github.com/SequencingDOTcom/Maven-Android-OAuth-Java/blob/master/src/main/java/com/sequencing/androidoauth/core/SQUIoAuthHandler.java) instance that is handling authentication process
+    * register your authentication handler by invoking ```authenticate``` method with view, callback and app configuration
+    
+    ```java
+	public void authenticate(View viewLogin, final ISQAuthCallback authCallback, AuthenticationParameters parameters);
+    ```
+
+
+
+File selector Gradle plugin integration
+======================================
+
+You need to follow instructions below if you want to build in and use OAuth logic in your existing or new project.
+* create a new Android Gradle based project (i.e. in Android Studio or Eclipse)
+* File selector module prepared as separate module, but it depends on a [SequencingOAuth2Client](https://github.com/SequencingDOTcom/Maven-OAuth-Java/blob/master/src/main/java/com/sequencing/oauth/core/SequencingOAuth2Client.java) instance from oAuth module. File selector can execute request to server for files with [SequencingOAuth2Client](https://github.com/SequencingDOTcom/Maven-OAuth-Java/blob/master/src/main/java/com/sequencing/oauth/core/SequencingOAuth2Client.java) instance only. Thus you need 2 modules to be installed: oAuth module and File Selector module
+* add gradle dependency
+	* see [gradle guides](https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html) 
+	* include the listed below dependency into build.gradle file in dependencies section. Here is dependency declaration example:
+	```
+	dependencies {
+   		compile 'com.sequencing:file-selector:1.0.7'
+    }
+	```
+* integrate autherization functionality
+	* add imports
+	```
+    import com.sequencing.androidoauth.core.OAuth2Parameters;
+    import com.sequencing.fileselector.core.ISQFileCallback;
+    import com.sequencing.fileselector.core.SQUIFileSelectHandler;
+    import com.sequencing.oauth.core.Token;
+    ```
+* oAuth Gradle plugin. See reference: [Maven-Android-OAuth-Java](https://github.com/SequencingDOTcom/Maven-Android-OAuth-Java)
+* integrate file selector functionality
+	* implement [ISQFileCallback](https://github.com/SequencingDOTcom/Maven-Android-File-Selector-Java/blob/master/src/main/java/com/sequencing/fileselector/core/ISQFileCallback.java)
+	```
+     /**
+     * Callback for handling selected file
+     * @param entity selected file entity
+     * @param activity activity of file selector
+     */
+    void onFileSelected(FileEntity entity, Activity activity);
+	```
+	* create [SQUIFileSelectHandler](https://github.com/SequencingDOTcom/Maven-Android-File-Selector-Java/blob/master/src/main/java/com/sequencing/fileselector/core/SQUIFileSelectHandler.java) instance that is handling file selection process
+	* register your file selection handler by invoking ```selectFile``` method 
+	* when you invoke ```selectFile``` method will be started file selector UI
+	* when user selects any file and clics on "Continue" button in UI will be invoked user [ISQFileCallback](https://github.com/SequencingDOTcom/Maven-Android-File-Selector-Java/blob/master/src/main/java/com/sequencing/fileselector/core/ISQFileCallback.java) implementation and passed to him [FileEntity](https://github.com/SequencingDOTcom/Maven-Android-File-Selector-Java/blob/master/src/main/java/com/sequencing/fileselector/FileEntity.java) object and current file selector activity
+	* each file is represented as [FileEntity](https://github.com/SequencingDOTcom/Maven-Android-File-Selector-Java/blob/master/src/main/java/com/sequencing/fileselector/FileEntity.java) object with following keys and values format:
+	
+      key name | type | description
+      ------------- | ------------- | ------------- 
+      DateAdded | String | date file was added
+      Ext | String | file extension
+      FileCategory | String | file category: Community, Uploaded, FromApps, Altruist
+      FileSubType | String | file subtype
+      FileType | String | file type
+      FriendlyDesc1 | String | person name for sample files
+      FriendlyDesc2 | String | person description for sample files
+      Id | String | file ID
+      Name | String | file name
+      Population | String | 
+      Sex | String |	the sex
+
+* examples 
+	* example of File selector UI
+	
+	![my files](https://raw.githubusercontent.com/SequencingDOTcom/Maven-Android-File-Selector-Java/master/Screenshots/file_selector_my_files.png)	
+
+	* example of ```Select File``` button
+	
+	```Button btnFileSelector = (Button)findViewById(R.id.btnFileSelector);```
+    * example of [SQUIFileSelectHandler](https://github.com/SequencingDOTcom/Maven-Android-File-Selector-Java/blob/master/src/main/java/com/sequencing/fileselector/core/SQUIFileSelectHandler.java) initialization
+
+	```SQUIFileSelectHandler fileSelectHandler = new SQUIFileSelectHandler(this);```
+    * example of ```selectFile``` method
+
+	```
+	fileSelectHandler.selectFile(OAuth2Parameters.getInstance().getOauth(), new ISQFileCallback() {
+
+                    @Override
+                    public void onFileSelected(FileEntity entity, Activity activity) {
+                        Log.i(TAG, "File has been selected");
+
+                        Toast toast = Toast.makeText(getApplicationContext(), entity.toString(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+	```
+
 
 App chains
 ======================================
