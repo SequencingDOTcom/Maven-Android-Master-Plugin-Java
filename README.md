@@ -1,6 +1,6 @@
 # Master Maven plugin for adding Squencing.com's Real-Time Personalization technology to Android and Java apps
 =========================================
-This Master Maven plugin can be used to quickly add Real-Time Personalization to your app. This Master Plugin contains a customizable, end-to-end plug-n-play solution that quickly adds all necessary code (OAuth2, File Selector and App Chain coding) to your app.
+This Master Maven plugin can be used to quickly add [Real-Time Personalization](https://sequencing.com/developer-documentation/what-is-real-time-personalization-rtp) to your app. This Master Plugin contains a customizable, end-to-end plug-n-play solution that quickly adds all necessary code (OAuth2, File Selector and App Chain coding) to your app.
 
 Once this Master Plugin is added to your app all you'll need to do is:
 
@@ -15,6 +15,10 @@ To code Real-Time Personalization technology into apps, developers may [register
 * Java (Maven plugin)] <-- this repo
 * [Objective-C (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPods-iOS-Master-Plugin-ObjectiveC)
 * [Swift (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPods-iOS-Master-Plugin-Swift)
+
+**Master Plugin - Plug-n-Play Samples** (These sample repos can be used as an out-of-the-box solution to quickly add Real-Time Personalization technology into your app):
+* [Android (Maven plugin) Plug-n-Play Demo](https://github.com/SequencingDOTcom/Android-Master-Plugin-Plug-N-Play-Sample)
+* [Objective-C (CocoaPod plugin) Plug-n-Play Demo](https://github.com/SequencingDOTcom/iOS-Objective-C-Master-Plugin-Plug-n-Play-Sample)
 
 Contents
 =========================================
