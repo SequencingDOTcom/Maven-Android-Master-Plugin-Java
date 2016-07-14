@@ -54,7 +54,7 @@ Master Gradle plugin integration
 * include dependency into build.gradle file in dependencies section. Here is dependency declaration example:
 	```
 	dependencies {
-   		compile 'com.sequencing:master-plugin:1.0.5' 
+   		compile 'com.sequencing:master-plugin:1.0.28' 
     }
 	```
 * integrate OAuth Gradle plugin
@@ -72,7 +72,7 @@ You need to follow instructions below if you want to build in and use OAuth logi
 	* add dependency into build.gradle file in dependencies section. Here is dependency declaration example:
 	```
 	dependencies {
-   		compile 'com.sequencing:android-oauth:1.0.3' 
+   		compile 'com.sequencing:android-oauth:1.0.18' 
     }
 	```
 * integrate autherization functionality
@@ -126,7 +126,7 @@ You need to follow instructions below if you want to build in and use OAuth logi
 	* include the listed below dependency into build.gradle file in dependencies section. Here is dependency declaration example:
 	```
 	dependencies {
-   		compile 'com.sequencing:file-selector:1.0.7'
+   		compile 'com.sequencing:file-selector:1.0.26'
     }
 	```
 * integrate autherization functionality
@@ -191,7 +191,7 @@ You need to follow instructions below if you want to build in and use OAuth logi
                         Toast toast = Toast.makeText(getApplicationContext(), entity.toString(), Toast.LENGTH_LONG);
                         toast.show();
                     }
-                });
+                }, true, null);
 	```
 
 
