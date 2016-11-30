@@ -15,6 +15,7 @@ To code Real-Time Personalization technology into apps, developers may [register
 * Java (Maven plugin)] <-- this repo
 * [Swift (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPods-iOS-Master-Plugin-Swift)
 * [Objective-C (CocoaPod plugin)](https://github.com/SequencingDOTcom/CocoaPods-iOS-Master-Plugin-ObjectiveC)
+* [C#/.NET (Nuget for Visual Studio](https://sequencing.com/developer-documentation/nuget-visual-studio)
 
 **Master Plugin - Plug-n-Play Samples** (This code can be used as an out-of-the-box solution to quickly add Real-Time Personalization technology into your app):
 * [Android (Maven) Plug-n-Play Sample](https://github.com/SequencingDOTcom/Android-Master-Plugin-Plug-N-Play-Sample)
