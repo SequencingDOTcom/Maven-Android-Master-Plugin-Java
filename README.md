@@ -1,4 +1,4 @@
-# Master Gradle and Maven plugin for adding Squencing.com's Real-Time Personalization technology to Android and Java apps
+# Master Gradle and Maven plugin for adding Squencing.com's Real-Time Personalization (+RTP) API to Android and Java apps
 
 This Master Gradle and Maven plugin can be used to quickly add [Real-Time Personalization](https://sequencing.com/developer-documentation/what-is-real-time-personalization-rtp) to your app. This Master Plugin contains a customizable, end-to-end plug-n-play solution that quickly adds all necessary code (OAuth2, File Selector and App Chain coding) to your app.
 
